@@ -10,10 +10,10 @@ class App extends Component {
     bad: 0
   }
   
-  leaveFeedback = () => { 
-    console.log(this.state)
+  leaveFeedback = (evt) => { 
+    // console.log(evt.target)
     this.setState(prevState => ({
-      
+      [evt.target.name]: prevState[evt.target.name] + 1,  
     }))
   }
 
@@ -35,7 +35,7 @@ class App extends Component {
       >
         <Section title="Please leave feedback">
           <FeedbackOptions
-            // options={} 
+            options={Object.keys(this.state)} 
             onLeaveFeedback={this.leaveFeedback} />
           <Statistics
             good={this.state.good}
